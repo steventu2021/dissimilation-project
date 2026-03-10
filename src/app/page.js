@@ -14,14 +14,14 @@ export default function Home() {
       <main className="max-w-5xl mx-auto px-8 md:px-12 mt-24">
         {/* Hero Section */}
         <section className="mb-40">
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tight leading-none mb-12">
+          <h1 className="font-serif text-[16vw] sm:text-7xl md:text-8xl lg:text-[10rem] font-black tracking-tight leading-none mb-12">
             DIS-
             <br />
             SIMI-
             <br />
             LATION
           </h1>
-          <p className="font-serif text-2xl md:text-3xl max-w-3xl leading-snug">
+          <p className="font-serif text-xl sm:text-2xl md:text-3xl max-w-3xl leading-snug">
             The process by which two similar or identical sounds in a word become <span className="font-bold border-b-4 border-foreground pb-1">less alike</span>.
           </p>
         </section>
@@ -47,8 +47,8 @@ export default function Home() {
         <section className="mb-40 space-y-32">
           
           <CategorySection 
-            title="1. Liquid Dissimilation ($l$ and $r$)"
-            description="This is the most frequent type of dissimilation in English, often inherited from Latin. English has a phonetic constraint that makes it difficult to process two 'l' sounds or two 'r' sounds in close proximity. The Suffix Rule: The Latin suffix '-alis' (pertaining to) usually remains '-al' in English. However, if the root word already contains an 'l', the suffix dissimilates to '-ar'."
+            title={<>1. Liquid Dissimilation (<em className="font-serif">l</em> and <em className="font-serif">r</em>)</>}
+            description={<>This is the most frequent type of dissimilation in English, often inherited from Latin. English has a phonetic constraint that makes it difficult to process two <em className="font-serif font-bold">l</em> sounds or two <em className="font-serif font-bold">r</em> sounds in close proximity. The Suffix Rule: The Latin suffix <em className="font-serif">-alis</em> (pertaining to) usually remains <em className="font-serif">-al</em> in English. However, if the root word already contains an <em className="font-serif">l</em>, the suffix dissimilates to <em className="font-serif font-bold">-ar</em>.</>}
           >
             <InteractiveExample
               original="Singul-al"
@@ -56,7 +56,7 @@ export default function Home() {
               targetRange={[6, 9]} 
               originalTarget="-al"
               newTarget="-ar"
-              explanation="To avoid 'singul-al', the suffix dissimilates to -ar."
+              explanation={<>To avoid the repetitive "<em className="font-serif">singul-al</em>", the suffix dissimilates to <em className="font-serif font-bold">-ar</em>.</>}
             />
             <InteractiveExample
               original="Modul-al"
@@ -64,7 +64,7 @@ export default function Home() {
               targetRange={[5, 8]}
               originalTarget="-al"
               newTarget="-ar"
-              explanation="To avoid 'modul-al', the suffix dissimilates to -ar."
+              explanation={<>To avoid "<em className="font-serif">modul-al</em>", the suffix dissimilates to <em className="font-serif font-bold">-ar</em>.</>}
             />
             <InteractiveExample
               original="Lun-al"
@@ -72,13 +72,13 @@ export default function Home() {
               targetRange={[3, 6]}
               originalTarget="-al"
               newTarget="-ar"
-              explanation="From Luna (Moon). To avoid 'lun-al', the suffix dissimilates to -ar."
+              explanation={<>From Luna (Moon). To avoid "<em className="font-serif">lun-al</em>", the suffix dissimilates to <em className="font-serif font-bold">-ar</em>.</>}
             />
           </CategorySection>
 
           <CategorySection 
             title="2. Rhotic Dissimilation (The 'R-Drop')"
-            description="In standard and rapid English speech, if two 'r' sounds (rhotic consonants) appear in consecutive syllables, the first one is frequently deleted or changed to a glide. This simplifies the 'tongue-bunching' required."
+            description={<>In standard and rapid English speech, if two <em className="font-serif font-bold">r</em> sounds (rhotic consonants) appear in consecutive syllables, the first one is frequently deleted or changed to a glide. This simplifies the 'tongue-bunching' required.</>}
           >
             <InteractiveExample
               original="February"
@@ -86,7 +86,7 @@ export default function Home() {
               targetRange={[3, 4]} 
               originalTarget="r"
               newTarget="∅"
-              explanation="The first 'r' is often dropped (/ˈfɛbjʊɛri/) because the brain anticipates the second 'r'."
+              explanation={<>The first <em className="font-serif">r</em> is often dropped (/ˈfɛbjʊɛri/) because the brain anticipates the second <em className="font-serif">r</em> at the end.</>}
             />
             <InteractiveExample
               original="Berserk"
@@ -94,7 +94,7 @@ export default function Home() {
               targetRange={[2, 3]} 
               originalTarget="r"
               newTarget="∅"
-              explanation="Commonly pronounced as 'be-zerk' rather than 'ber-zerk'."
+              explanation={<>Commonly pronounced as "<em className="font-serif">be-zerk</em>" rather than "<em className="font-serif">ber-zerk</em>".</>}
             />
             <InteractiveExample
               original="Governor"
@@ -102,13 +102,13 @@ export default function Home() {
               targetRange={[4, 5]} 
               originalTarget="r"
               newTarget="∅"
-              explanation="Often pronounced 'guv-en-er', dropping the internal 'r' to avoid repetitive rhoticity."
+              explanation={<>Often pronounced "<em className="font-serif">guv-en-er</em>", dropping the internal <em className="font-serif">r</em> to avoid repetitive rhoticity.</>}
             />
           </CategorySection>
 
           <CategorySection 
             title="3. Fricative Dissimilation"
-            description="Fricatives (sounds made by forcing air, like f, s, th, x) are acoustically 'noisy'. When two appear together, one may switch to a 'stop' (completely blocked airflow, like t, k) to create clearer contrast."
+            description={<>Fricatives (sounds made by forcing air, like <em className="font-serif">f, s, th, x</em>) are acoustically 'noisy'. When two appear together, one may switch to a 'stop' (completely blocked airflow, like <em className="font-serif">t, k</em>) to create clearer contrast.</>}
           >
             <InteractiveExample
               original="Fifth"
@@ -116,7 +116,7 @@ export default function Home() {
               targetRange={[3, 5]} 
               originalTarget="th"
               newTarget="t"
-              explanation="In many modern dialects, the second fricative (th) is dissimilated to a 't' (/fɪft/)."
+              explanation={<>In many modern dialects, the second fricative (<em className="font-serif">th</em>) is dissimilated to a <em className="font-serif">t</em> (/fɪft/).</>}
             />
             <InteractiveExample
               original="Sixth"
@@ -124,13 +124,13 @@ export default function Home() {
               targetRange={[3, 5]} 
               originalTarget="th"
               newTarget="t"
-              explanation="Similar to 'fifth', the ending fricative is frequently changed to a 't' to replace a 'hiss' with a 'click'."
+              explanation={<>Similar to 'fifth', the ending fricative is frequently changed to a <em className="font-serif font-bold">t</em> to replace a 'hiss' with a 'click'.</>}
             />
           </CategorySection>
 
           <CategorySection 
-            title="4. Dissimilation in Loanwords (Etymological)"
-            description="When English adopts words from French or Latin, it often 'fixes' repetitive sounds that existed in the source language to make them more distinct for English speakers."
+            title="4. Dissimilation in Loanwords"
+            description={<>When English adopts words from French or Latin, it often 'fixes' repetitive sounds that existed in the source language to make them more distinct for English speakers.</>}
           >
             <InteractiveExample
               original="Purpure"
@@ -138,7 +138,7 @@ export default function Home() {
               targetRange={[5, 6]} 
               originalTarget="r"
               newTarget="l"
-              explanation="The Old French 'purpre'. English speakers found the double 'r' redundant. The second 'r' dissimilated into an 'l'."
+              explanation={<>The Old French '<em className="font-serif">purpre</em>'. English speakers found the double <em className="font-serif">r</em> redundant. The second <em className="font-serif">r</em> dissimilated into an <em className="font-serif font-bold">l</em>.</>}
             />
             <InteractiveExample
               original="Turtur"
@@ -146,7 +146,7 @@ export default function Home() {
               targetRange={[5, 6]} 
               originalTarget="r"
               newTarget="l"
-              explanation="Derived from Latin 'turtur'. The repetition was broken by changing the final 'r' to an 'l'."
+              explanation={<>Derived from Latin '<em className="font-serif">turtur</em>'. The repetition was broken by changing the final <em className="font-serif">r</em> to an <em className="font-serif font-bold">l</em>.</>}
             />
           </CategorySection>
 
@@ -189,15 +189,15 @@ function InteractiveExample({ original, english, targetRange, originalTarget, ne
     <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center justify-between p-8 md:p-12 border border-foreground/20 rounded-xl hover:border-foreground transition-colors duration-500 bg-white dark:bg-black group">
       {/* Interactive Word Area */}
       <div 
-        className="flex-1 flex justify-center items-center cursor-pointer min-h-[160px]"
+        className="flex-1 flex justify-center items-center cursor-pointer min-h-[160px] overflow-x-hidden min-w-0"
         onClick={() => setMorphed(!morphed)}
       >
-        <div className="font-serif text-5xl md:text-6xl font-bold tracking-widest text-center select-none flex items-baseline">
+        <div className="font-serif text-[10vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest text-center select-none flex items-baseline">
           <span className="transition-all duration-700">{pre}</span>
           <span 
             className={`inline-block transition-all duration-1000 ease-in-out mx-1 ${
               morphed 
-                ? newTarget === "∅" ? "text-foreground/30 scale-75" : "text-7xl md:text-8xl scale-110 -translate-y-2"
+                ? newTarget === "∅" ? "text-foreground/30 scale-75" : "text-5xl sm:text-6xl md:text-8xl scale-110 -translate-y-1 lg:-translate-y-2"
                 : "text-foreground group-hover:scale-110 group-hover:text-foreground/80"
             }`}
           >
