@@ -1,65 +1,136 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-foreground selection:text-background pb-32">
+      {/* Navigation / Header */}
+      <header className="p-8 md:p-12 w-full flex justify-between items-center border-b border-foreground/10">
+        <h2 className="font-serif font-bold text-xl tracking-tighter">Linguistics 101</h2>
+        <span className="text-sm uppercase tracking-widest font-medium">Topic 04</span>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-8 md:px-12 mt-24">
+        {/* Hero Section */}
+        <section className="mb-40">
+          <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tight leading-none mb-12">
+            DIS-
+            <br />
+            SIMI-
+            <br />
+            LATION
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="font-serif text-2xl md:text-3xl max-w-3xl leading-snug">
+            The process by which two similar or identical sounds in a word become <span className="font-bold border-b-4 border-foreground pb-1">less alike</span>.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+        </section>
+
+        {/* The "Why" Section */}
+        <section className="mb-40 border-t-2 border-foreground pt-16">
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6">Why does this happen?</h2>
+            </div>
+            <div className="flex flex-col gap-8 text-lg md:text-xl font-light leading-relaxed">
+              <p>
+                Languages are lazy. Or rather, speakers are striving for efficiency. When a word contains two identical or very similar sounds close together, it can be physically awkward to articulate them in rapid succession (a "tongue twister" effect).
+              </p>
+              <p>
+                To make pronunciation easier and to make the acoustic signal clearer to the listener, one of the sounds will randomly mutate or be deleted entirely. The sounds <strong>dissimilate</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Examples Section */}
+        <section className="mb-40">
+          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-16 text-center">See it in action</h2>
+          <div className="flex flex-col gap-24">
+            <InteractiveExample
+              latin="purpur"
+              shiftIndex={2}
+              originalChar="r"
+              newChar="l"
+              english="purple"
+              explanation="The Latin word for the color was 'purpur'. However, pronouncing two 'r' sounds so close together is difficult. Over time, the second 'r' dissimilated into an 'l'."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            
+            <InteractiveExample
+              latin="peregrinus"
+              shiftIndex={2}
+              originalChar="r"
+              newChar="l"
+              english="pilgrim"
+              explanation="Meaning 'foreigner' or 'traveler' in Latin. The sequence of 'r...r' was awkward. The first 'r' shifted into an 'l', eventually giving us 'pilgrim' in English."
+            />
+
+            <InteractiveExample
+              latin="surprise"
+              shiftIndex={2}
+              originalChar="r"
+              newChar="∅"
+              english="suprise"
+              explanation="A modern example! In rapid speech, the first 'r' in 'surprise' is frequently dropped entirely. This is a form of dissimilation called deletion."
+            />
+          </div>
+        </section>
+
+        {/* Summary Wrap-up */}
+        <section className="border-t border-foreground pt-16 text-center">
+          <h2 className="font-serif text-3xl md:text-5xl font-bold mb-8">Language is always optimizing.</h2>
+          <p className="text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            Dissimilation shows us that language is primarily a physical act. When our mouths stumble over repetitive sounds, the language simply adapts.
+          </p>
+        </section>
       </main>
+    </div>
+  );
+}
+
+function InteractiveExample({ latin, shiftIndex, originalChar, newChar, english, explanation }) {
+  const [morphed, setMorphed] = useState(false);
+
+  // Reconstruct the visual word
+  const pre = latin.slice(0, shiftIndex);
+  const target = latin[shiftIndex];
+  const post = latin.slice(shiftIndex + 1);
+
+  return (
+    <div className="flex flex-col md:flex-row gap-12 items-center justify-between p-8 md:p-16 border border-foreground/20 rounded-xl hover:border-foreground transition-colors duration-500 bg-white dark:bg-black">
+      {/* Interactive Word Area */}
+      <div 
+        className="flex-1 flex justify-center items-center cursor-pointer group"
+        onClick={() => setMorphed(!morphed)}
+      >
+        <div className="font-serif text-6xl md:text-7xl font-bold tracking-widest text-center select-none">
+          <span className="transition-all duration-700">{pre}</span>
+          <span 
+            className={`inline-block transition-all duration-1000 ease-in-out mx-1 ${
+              morphed 
+                ? "text-8xl md:text-9xl scale-125 -translate-y-4" 
+                : "text-foreground group-hover:scale-110"
+            }`}
+          >
+            {morphed ? newChar : target}
+          </span>
+          <span className="transition-all duration-700">{post}</span>
+          
+          <div className="text-lg font-sans font-medium uppercase tracking-widest mt-8 text-foreground/50 transition-colors group-hover:text-foreground">
+            {morphed ? "Click to revert" : "Click the word"}
+          </div>
+        </div>
+      </div>
+
+      {/* Explanation Area */}
+      <div className="flex-1 space-y-4">
+        <h3 className="text-3xl font-serif font-bold">
+          {morphed ? "English: " + english : "Latin: " + latin}
+        </h3>
+        <p className="text-lg leading-relaxed font-light">
+          {explanation}
+        </p>
+      </div>
     </div>
   );
 }
