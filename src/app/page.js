@@ -43,44 +43,120 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Interactive Examples Section */}
-        <section className="mb-40">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-16 text-center">See it in action</h2>
-          <div className="flex flex-col gap-24">
+        {/* Categorized Interactive Examples Section */}
+        <section className="mb-40 space-y-32">
+          
+          <CategorySection 
+            title="1. Liquid Dissimilation ($l$ and $r$)"
+            description="This is the most frequent type of dissimilation in English, often inherited from Latin. English has a phonetic constraint that makes it difficult to process two 'l' sounds or two 'r' sounds in close proximity. The Suffix Rule: The Latin suffix '-alis' (pertaining to) usually remains '-al' in English. However, if the root word already contains an 'l', the suffix dissimilates to '-ar'."
+          >
             <InteractiveExample
-              latin="purpur"
-              shiftIndex={2}
-              originalChar="r"
-              newChar="l"
-              english="purple"
-              explanation="The Latin word for the color was 'purpur'. However, pronouncing two 'r' sounds so close together is difficult. Over time, the second 'r' dissimilated into an 'l'."
+              original="Singul-al"
+              english="Singular"
+              targetRange={[6, 9]} 
+              originalTarget="-al"
+              newTarget="-ar"
+              explanation="To avoid 'singul-al', the suffix dissimilates to -ar."
             />
-            
             <InteractiveExample
-              latin="peregrinus"
-              shiftIndex={2}
-              originalChar="r"
-              newChar="l"
-              english="pilgrim"
-              explanation="Meaning 'foreigner' or 'traveler' in Latin. The sequence of 'r...r' was awkward. The first 'r' shifted into an 'l', eventually giving us 'pilgrim' in English."
+              original="Modul-al"
+              english="Modular"
+              targetRange={[5, 8]}
+              originalTarget="-al"
+              newTarget="-ar"
+              explanation="To avoid 'modul-al', the suffix dissimilates to -ar."
             />
+            <InteractiveExample
+              original="Lun-al"
+              english="Lunar"
+              targetRange={[3, 6]}
+              originalTarget="-al"
+              newTarget="-ar"
+              explanation="From Luna (Moon). To avoid 'lun-al', the suffix dissimilates to -ar."
+            />
+          </CategorySection>
 
+          <CategorySection 
+            title="2. Rhotic Dissimilation (The 'R-Drop')"
+            description="In standard and rapid English speech, if two 'r' sounds (rhotic consonants) appear in consecutive syllables, the first one is frequently deleted or changed to a glide. This simplifies the 'tongue-bunching' required."
+          >
             <InteractiveExample
-              latin="surprise"
-              shiftIndex={2}
-              originalChar="r"
-              newChar="∅"
-              english="suprise"
-              explanation="A modern example! In rapid speech, the first 'r' in 'surprise' is frequently dropped entirely. This is a form of dissimilation called deletion."
+              original="February"
+              english="Feb-yu-ary"
+              targetRange={[3, 4]} 
+              originalTarget="r"
+              newTarget="∅"
+              explanation="The first 'r' is often dropped (/ˈfɛbjʊɛri/) because the brain anticipates the second 'r'."
             />
-          </div>
+            <InteractiveExample
+              original="Berserk"
+              english="Be-zerk"
+              targetRange={[2, 3]} 
+              originalTarget="r"
+              newTarget="∅"
+              explanation="Commonly pronounced as 'be-zerk' rather than 'ber-zerk'."
+            />
+            <InteractiveExample
+              original="Governor"
+              english="Guv-en-er"
+              targetRange={[4, 5]} 
+              originalTarget="r"
+              newTarget="∅"
+              explanation="Often pronounced 'guv-en-er', dropping the internal 'r' to avoid repetitive rhoticity."
+            />
+          </CategorySection>
+
+          <CategorySection 
+            title="3. Fricative Dissimilation"
+            description="Fricatives (sounds made by forcing air, like f, s, th, x) are acoustically 'noisy'. When two appear together, one may switch to a 'stop' (completely blocked airflow, like t, k) to create clearer contrast."
+          >
+            <InteractiveExample
+              original="Fifth"
+              english="Fift"
+              targetRange={[3, 5]} 
+              originalTarget="th"
+              newTarget="t"
+              explanation="In many modern dialects, the second fricative (th) is dissimilated to a 't' (/fɪft/)."
+            />
+            <InteractiveExample
+              original="Sixth"
+              english="Sikst"
+              targetRange={[3, 5]} 
+              originalTarget="th"
+              newTarget="t"
+              explanation="Similar to 'fifth', the ending fricative is frequently changed to a 't' to replace a 'hiss' with a 'click'."
+            />
+          </CategorySection>
+
+          <CategorySection 
+            title="4. Dissimilation in Loanwords (Etymological)"
+            description="When English adopts words from French or Latin, it often 'fixes' repetitive sounds that existed in the source language to make them more distinct for English speakers."
+          >
+            <InteractiveExample
+              original="Purpure"
+              english="Purple"
+              targetRange={[5, 6]} 
+              originalTarget="r"
+              newTarget="l"
+              explanation="The Old French 'purpre'. English speakers found the double 'r' redundant. The second 'r' dissimilated into an 'l'."
+            />
+            <InteractiveExample
+              original="Turtur"
+              english="Turtle"
+              targetRange={[5, 6]} 
+              originalTarget="r"
+              newTarget="l"
+              explanation="Derived from Latin 'turtur'. The repetition was broken by changing the final 'r' to an 'l'."
+            />
+          </CategorySection>
+
         </section>
 
         {/* Summary Wrap-up */}
         <section className="border-t border-foreground pt-16 text-center">
           <h2 className="font-serif text-3xl md:text-5xl font-bold mb-8">Language is always optimizing.</h2>
           <p className="text-xl max-w-2xl mx-auto font-light leading-relaxed">
-            Dissimilation shows us that language is primarily a physical act. When our mouths stumble over repetitive sounds, the language simply adapts.
+            Dissimilation shows us that language is primarily a physical act. When our mouths stumble over repetitive sounds, the language simply adapts by making sounds less alike.
           </p>
         </section>
       </main>
@@ -88,48 +164,60 @@ export default function Home() {
   );
 }
 
-function InteractiveExample({ latin, shiftIndex, originalChar, newChar, english, explanation }) {
+function CategorySection({ title, description, children }) {
+  return (
+    <div className="border-t-2 border-foreground/20 pt-16">
+      <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">{title}</h2>
+      <p className="text-lg md:text-xl font-light leading-relaxed max-w-3xl mb-12">
+        {description}
+      </p>
+      <div className="flex flex-col gap-12">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function InteractiveExample({ original, english, targetRange, originalTarget, newTarget, explanation }) {
   const [morphed, setMorphed] = useState(false);
 
-  // Reconstruct the visual word
-  const pre = latin.slice(0, shiftIndex);
-  const target = latin[shiftIndex];
-  const post = latin.slice(shiftIndex + 1);
+  // Split string based on target range [start, end)
+  const pre = original.slice(0, targetRange[0]);
+  const post = original.slice(targetRange[1]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 items-center justify-between p-8 md:p-16 border border-foreground/20 rounded-xl hover:border-foreground transition-colors duration-500 bg-white dark:bg-black">
+    <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center justify-between p-8 md:p-12 border border-foreground/20 rounded-xl hover:border-foreground transition-colors duration-500 bg-white dark:bg-black group">
       {/* Interactive Word Area */}
       <div 
-        className="flex-1 flex justify-center items-center cursor-pointer group"
+        className="flex-1 flex justify-center items-center cursor-pointer min-h-[160px]"
         onClick={() => setMorphed(!morphed)}
       >
-        <div className="font-serif text-6xl md:text-7xl font-bold tracking-widest text-center select-none">
+        <div className="font-serif text-5xl md:text-6xl font-bold tracking-widest text-center select-none flex items-baseline">
           <span className="transition-all duration-700">{pre}</span>
           <span 
             className={`inline-block transition-all duration-1000 ease-in-out mx-1 ${
               morphed 
-                ? "text-8xl md:text-9xl scale-125 -translate-y-4" 
-                : "text-foreground group-hover:scale-110"
+                ? newTarget === "∅" ? "text-foreground/30 scale-75" : "text-7xl md:text-8xl scale-110 -translate-y-2"
+                : "text-foreground group-hover:scale-110 group-hover:text-foreground/80"
             }`}
           >
-            {morphed ? newChar : target}
+            {morphed ? newTarget : originalTarget}
           </span>
           <span className="transition-all duration-700">{post}</span>
-          
-          <div className="text-lg font-sans font-medium uppercase tracking-widest mt-8 text-foreground/50 transition-colors group-hover:text-foreground">
-            {morphed ? "Click to revert" : "Click the word"}
-          </div>
         </div>
       </div>
 
       {/* Explanation Area */}
       <div className="flex-1 space-y-4">
-        <h3 className="text-3xl font-serif font-bold">
-          {morphed ? "English: " + english : "Latin: " + latin}
+        <h3 className="text-2xl font-serif font-bold transition-all duration-500">
+          Result: {morphed ? <span className="border-b-2 border-foreground">{english}</span> : english}
         </h3>
-        <p className="text-lg leading-relaxed font-light">
+        <p className="text-base md:text-lg leading-relaxed font-light text-foreground/80">
           {explanation}
         </p>
+        <div className="text-xs font-sans font-bold uppercase tracking-widest mt-4 text-foreground/40 transition-colors group-hover:text-foreground/80">
+          {morphed ? "Click to revert" : "Click the word to see effect"}
+        </div>
       </div>
     </div>
   );
