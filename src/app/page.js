@@ -189,16 +189,18 @@ function InteractiveExample({ original, english, targetRange, originalTarget, ne
     <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center justify-between p-8 md:p-12 border border-foreground/20 rounded-xl hover:border-foreground transition-colors duration-500 bg-white dark:bg-black group">
       {/* Interactive Word Area */}
       <div 
-        className="flex-1 flex justify-center items-center cursor-pointer min-h-[160px] overflow-x-hidden min-w-0"
+        className="flex-1 flex justify-center items-center cursor-pointer min-h-[160px] overflow-visible min-w-0 w-full"
         onClick={() => setMorphed(!morphed)}
       >
-        <div className="font-serif text-[10vw] sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest text-center select-none flex items-baseline">
+        <div className="font-serif text-[clamp(1.5rem,7vw,3.75rem)] md:text-5xl lg:text-6xl font-bold tracking-widest text-center select-none flex flex-nowrap items-baseline justify-center whitespace-nowrap">
           <span className="transition-all duration-700">{pre}</span>
           <span 
-            className={`inline-block transition-all duration-1000 ease-in-out mx-1 ${
+            className={`inline-block whitespace-nowrap transition-all duration-1000 ease-in-out mx-[2px] sm:mx-1 ${
               morphed 
-                ? newTarget === "∅" ? "text-foreground/30 scale-75" : "text-5xl sm:text-6xl md:text-8xl scale-110 -translate-y-1 lg:-translate-y-2"
-                : "text-foreground group-hover:scale-110 group-hover:text-foreground/80"
+                ? newTarget === "∅" 
+                    ? "text-foreground/30 scale-75" 
+                    : "text-[clamp(2.5rem,10vw,6rem)] md:text-7xl lg:text-8xl scale-110 -translate-y-1 lg:-translate-y-2 origin-bottom"
+                : "text-foreground group-hover:scale-110 group-hover:text-foreground/80 origin-bottom"
             }`}
           >
             {morphed ? newTarget : originalTarget}
